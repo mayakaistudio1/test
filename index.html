@@ -6,1060 +6,1066 @@
 <title>! Reality Game - Life OS</title>
 <style>
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-html, body {
-font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-color: #f5f5f5;
-height: 100%;
-}
+
+html,
 body {
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 20px;
-min-height: 100vh;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #f5f5f5;
+  height: 100%;
 }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
 .container {
-width: 100%;
-max-width: 500px;
-background: #1f1f1f;
-border-radius: 12px;
-padding: 30px;
-box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 500px;
+  background: #1f1f1f;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
+
 h1 {
-font-size: 2.5rem;
-margin-bottom: 10px;
-color: #0ea5e9;
-text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #0ea5e9;
+  text-align: center;
 }
+
 .subtitle {
-text-align: center;
-color: #999;
-margin-bottom: 30px;
-font-size: 0.9rem;
+  text-align: center;
+  color: #999;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
 }
-}
-}
+
 .screen {
-display: none;
+  display: none;
+}
+
 .screen.active {
-display: block;
+  display: block;
+}
+
 .progress-bar {
-display: flex;
-gap: 4px;
-margin-bottom: 30px;
+  display: flex;
+  gap: 4px;
+  margin-bottom: 30px;
 }
+
 .progress-step {
-flex: 1;
-height: 4px;
-background: #333;
-border-radius: 2px;
-transition: background 0.3s;
+  flex: 1;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  transition: background 0.3s;
 }
-}
-}
+
 .progress-step.active {
-background: #0ea5e9;
-.form-group {
-margin-bottom: 20px;
-label {
-display: block;
-font-size: 0.9rem;
-font-weight: 600;
-margin-bottom: 8px;
-color: #ddd;
+  background: #0ea5e9;
 }
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ddd;
+}
+
 input[type="text"],
 input[type="range"],
 textarea,
 select {
-width: 100%;
-padding: 12px;
-border: 1px solid #444;
-border-radius: 8px;
-background: #2a2a2a;
-color: #f5f5f5;
-font-size: 0.95rem;
-font-family: inherit;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: #f5f5f5;
+  font-size: 0.95rem;
+  font-family: inherit;
 }
+
 textarea {
-min-height: 80px;
-resize: vertical;
+  min-height: 80px;
+  resize: vertical;
 }
+
 input[type="range"] {
-padding: 0;
-height: 6px;
-cursor: pointer;
+  padding: 0;
+  height: 6px;
+  cursor: pointer;
 }
-}
+
 select {
-cursor: pointer;
+  cursor: pointer;
+}
+
 .slider-value {
-display: inline-block;
-margin-left: 10px;
-color: #0ea5e9;
-font-weight: 600;
+  display: inline-block;
+  margin-left: 10px;
+  color: #0ea5e9;
+  font-weight: 600;
 }
+
 .checkbox-label {
-display: flex;
-align-items: center;
-gap: 10px;
-font-weight: 500;
-cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  cursor: pointer;
 }
+
 input[type="checkbox"] {
-width: 20px;
-height: 20px;
-cursor: pointer;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
+
 .tags {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 10px;
-margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
 }
+
 .tag-btn {
-padding: 10px;
-border: 1px solid #444;
-border-radius: 6px;
-background: #2a2a2a;
-color: #999;
-font-size: 0.85rem;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.2s;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: #999;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
 }
-}
+
 .tag-btn:hover {
-background: #333;
+  background: #333;
+}
+
 .tag-btn.active {
-background: #0ea5e9;
-color: white;
-border-color: #0ea5e9;
+  background: #0ea5e9;
+  color: #fff;
+  border-color: #0ea5e9;
 }
+
 .buttons {
-display: flex;
-gap: 12px;
-margin-top: 30px;
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
 }
+
 button {
-flex: 1;
-padding: 12px 20px;
-border: none;
-border-radius: 8px;
-font-size: 0.95rem;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.2s;
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
 }
+
 .btn-primary {
-background: #0ea5e9;
-color: white;
+  background: #0ea5e9;
+  color: #fff;
 }
-}
+
 .btn-primary:hover {
-background: #0284c7;
+  background: #0284c7;
+}
+
 .btn-primary:disabled {
-background: #666;
-cursor: not-allowed;
-opacity: 0.6;
+  background: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
+
 .btn-secondary {
-background: #333;
-color: #ddd;
+  background: #333;
+  color: #ddd;
 }
-}
+
 .btn-secondary:hover {
-background: #404040;
+  background: #404040;
+}
+
 .card {
-background: #2a2a2a;
-border: 1px solid #444;
-border-radius: 10px;
-padding: 15px;
-margin-bottom: 12px;
-cursor: pointer;
-transition: all 0.2s;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
+
 .card:hover {
-border-color: #0ea5e9;
-background: #333;
+  border-color: #0ea5e9;
+  background: #333;
 }
+
 .card.completed {
-opacity: 0.5;
-text-decoration: line-through;
+  opacity: 0.5;
+  text-decoration: line-through;
 }
+
 .card-header {
-display: flex;
-align-items: center;
-gap: 10px;
-margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
 }
-}
+
 .card-icon {
-font-size: 1.5rem;
+  font-size: 1.5rem;
+}
+
 .card-title {
-font-weight: 600;
-color: #0ea5e9;
+  font-weight: 600;
+  color: #0ea5e9;
 }
+
 .card-desc {
-font-size: 0.85rem;
-color: #999;
-margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 8px;
 }
+
 .card-stats {
-display: flex;
-gap: 15px;
-font-size: 0.8rem;
-color: #666;
+  display: flex;
+  gap: 15px;
+  font-size: 0.8rem;
+  color: #666;
 }
+
 .hud {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap: 12px;
-margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
 }
+
 .hud-item {
-background: #2a2a2a;
-border: 1px solid #444;
-border-radius: 8px;
-padding: 12px;
-text-align: center;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
 }
+
 .hud-label {
-font-size: 0.75rem;
-color: #999;
-margin-bottom: 6px;
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 6px;
 }
+
 .hud-value {
-font-size: 1.8rem;
-font-weight: 700;
-color: #0ea5e9;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0ea5e9;
 }
+
 .hud-name {
-font-size: 0.8rem;
-color: #ddd;
-margin-top: 4px;
+  font-size: 0.8rem;
+  color: #ddd;
+  margin-top: 4px;
 }
+
 .feature-list {
-list-style: none;
-space: 10px 0;
+  list-style: none;
+  margin: 10px 0;
 }
+
 .feature-list li {
-padding: 8px 0;
-font-size: 0.9rem;
-color: #ccc;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  color: #ccc;
 }
+
 .info-box {
-background: #2a2a2a;
-border: 1px solid #444;
-border-radius: 8px;
-padding: 15px;
-margin: 15px 0;
-font-size: 0.85rem;
-color: #ccc;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0;
+  font-size: 0.85rem;
+  color: #ccc;
 }
+
 .success-message {
-background: #1a3a2a;
-border: 1px solid #0ea5e9;
-color: #0ea5e9;
-padding: 15px;
-border-radius: 8px;
-margin-bottom: 15px;
-text-align: center;
+  background: #1a3a2a;
+  border: 1px solid #0ea5e9;
+  color: #0ea5e9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
 }
+
 .step-number {
-text-align: center;
-color: #666;
-font-size: 0.85rem;
-margin-top: 15px;
+  text-align: center;
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 15px;
 }
+
 .card-checkbox {
-width: 20px;
-height: 20px;
-margin-right: 10px;
-cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
 }
+
 .xp-bar {
-height: 20px;
-background: #2a2a2a;
-border-radius: 4px;
-overflow: hidden;
-margin-top: 8px;
+  height: 20px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
 }
+
 .xp-progress {
-height: 100%;
-background: #0ea5e9;
-transition: width 0.3s;
+  height: 100%;
+  background: #0ea5e9;
+  transition: width 0.3s;
 }
+
 .xp-text {
-font-size: 0.75rem;
-color: #999;
-margin-top: 4px;
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 4px;
 }
 </style>
 </head>
 <body>
 <div class="container">
-<!-- ONBOARDING SCREENS -->
-<div id="screen-welcome" class="screen active">
-<h1>! Reality Game</h1>
-<p class="subtitle">Life-OS через миĸродействия</p>
-<div class="progress-bar">
-<div class="progress-step active"></div>
-<div class="progress-step"></div>
-<div class="progress-step"></div>
-<div class="progress-step"></div>
+  <!-- ONBOARDING SCREENS -->
+  <div id="screen-welcome" class="screen active">
+    <h1>! Reality Game</h1>
+    <p class="subtitle">Life-OS через микродействия</p>
+    <div class="progress-bar">
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+    </div>
+    <div class="form-group">
+      <h2 style="font-size: 1.5rem; margin-bottom: 15px;">Добро пожаловать!</h2>
+      <p style="color: #ccc; margin-bottom: 15px;">
+        Это не курс мотивации, это система самоуправления через:
+      </p>
+      <ul class="feature-list">
+        <li>✅ Персональные уровни (L1-L7)</li>
+        <li>✅ XP система и стрики</li>
+        <li>✅ Ежедневные карты-квесты</li>
+        <li>✅ Дневник и история</li>
+      </ul>
+    </div>
+    <div class="buttons">
+      <button class="btn-primary" onclick="nextScreen('welcome', 'style')">Начать →</button>
+    </div>
+  </div>
+
+  <!-- STYLE SELECTION -->
+  <div id="screen-style" class="screen">
+    <h1 style="font-size: 1.8rem;"># Стиль общения</h1>
+    <div class="progress-bar">
+      <div class="progress-step active"></div>
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+    </div>
+    <div class="form-group">
+      <label>Как со мной говорить?</label>
+      <select id="style" onchange="saveStyle(this.value)">
+        <option value="soft">$ Мягкий / поддерживающий</option>
+        <option value="hard">% Жесткий / прямой</option>
+        <option value="structured">&amp; Структурный / понятный</option>
+        <option value="anti-stress">' Анти-стресс / минимум</option>
+      </select>
+    </div>
+    <div class="buttons">
+      <button class="btn-secondary" onclick="prevScreen('style', 'welcome')">← Назад</button>
+      <button class="btn-primary" onclick="nextScreen('style', 'profile')">Дальше →</button>
+    </div>
+    <div class="step-number">Шаг 2 из 4</div>
+  </div>
+
+  <!-- PROFILE -->
+  <div id="screen-profile" class="screen">
+    <h1 style="font-size: 1.8rem;">! Твой профиль</h1>
+    <div class="progress-bar">
+      <div class="progress-step active"></div>
+      <div class="progress-step active"></div>
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+    </div>
+    <div class="form-group">
+      <label>Главная цель</label>
+      <input type="text" id="goal" placeholder="Например: запустить проект, вернуть контроль...">
+    </div>
+    <div class="form-group">
+      <label>Главный блокатор (что давит)</label>
+      <input type="text" id="blocker" placeholder="Например: страх отказа, перфекционизм...">
+    </div>
+    <div class="form-group">
+      <label>Размер задач</label>
+      <select id="taskSize">
+        <option value="micro">" Микро (2-5 мин)</option>
+        <option value="normal" selected>◆ Нормальный (15-45 мин)</option>
+        <option value="growth">◆◆ Рост (60+ мин)</option>
+      </select>
+    </div>
+    <div class="buttons">
+      <button class="btn-secondary" onclick="prevScreen('profile', 'style')">← Назад</button>
+      <button class="btn-primary" onclick="nextScreen('profile', 'ready')">Дальше →</button>
+    </div>
+    <div class="step-number">Шаг 3 из 4</div>
+  </div>
+
+  <!-- READY -->
+  <div id="screen-ready" class="screen">
+    <h1 style="font-size: 1.8rem;">✨ Готово!</h1>
+    <div class="progress-bar">
+      <div class="progress-step active"></div>
+      <div class="progress-step active"></div>
+      <div class="progress-step active"></div>
+      <div class="progress-step active"></div>
+    </div>
+    <div class="success-message">
+      ✅ Профиль создан!<br>
+      Ты начинаешь с L1 (Хаос → Стабилизация)
+    </div>
+    <div class="info-box">
+      <p># <strong>Ежедневный цикл:</strong></p>
+      <p style="margin-top: 10px;">☀ <strong>Утро (1 мин):</strong> Check-in → Система выбирает уровень</p>
+      <p style="margin-top: 8px;">% <strong>День:</strong> Выполняй 5 карт (получай XP)</p>
+      <p style="margin-top: 8px;">&amp; <strong>Вечер (2 мин):</strong> Логируй день (3 поля) → +25 XP</p>
+    </div>
+    <div class="buttons">
+      <button class="btn-secondary" onclick="prevScreen('ready', 'profile')">← Назад</button>
+      <button class="btn-primary" onclick="startGame()">Начать игру! →</button>
+    </div>
+    <div class="step-number">Шаг 4 из 4</div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="screen-dashboard" class="screen">
+    <h1 style="font-size: 2rem; margin-bottom: 5px;">Reality Game</h1>
+    <p class="subtitle">Life-OS</p>
+    <div class="hud">
+      <div class="hud-item">
+        <div class="hud-label">LEVEL</div>
+        <div class="hud-value" id="levelDisplay">1</div>
+        <div class="hud-name" id="levelName">Хаос</div>
+      </div>
+      <div class="hud-item">
+        <div class="hud-label">XP</div>
+        <div class="hud-value" id="xpDisplay">0</div>
+        <div class="xp-bar">
+          <div class="xp-progress" id="xpBar" style="width: 0%"></div>
+        </div>
+        <div class="xp-text" id="xpText">0/99</div>
+      </div>
+      <div class="hud-item">
+        <div class="hud-label">STREAK</div>
+        <div class="hud-value" id="streakDisplay">0</div>
+        <div class="hud-name">!</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label style="color: #0ea5e9;">Доминанта дня</label>
+      <div style="background: #2a2a2a; padding: 12px; border-radius: 8px; color: #ddd;">
+        <span id="dominantDisplay">Не определена</span>
+      </div>
+    </div>
+    <div id="cardsContainer"></div>
+    <div class="buttons">
+      <button class="btn-primary" onclick="showScreen('checkin')">☀ Morning Check-in</button>
+      <button class="btn-primary" onclick="showScreen('evening')"># Evening Log</button>
+    </div>
+    <div class="buttons" style="margin-top: 12px;">
+      <button class="btn-secondary" onclick="showScreen('history')">$ History</button>
+      <button class="btn-secondary" onclick="resetTodayConfirm()">♻ Reset Today</button>
+    </div>
+  </div>
+
+  <!-- MORNING CHECK-IN -->
+  <div id="screen-checkin" class="screen">
+    <h1 style="font-size: 1.8rem;">☀ Morning Check-in</h1>
+    <div class="form-group">
+      <label>Давление: <span class="slider-value" id="pressureValue">1</span>/2</label>
+      <input type="range" id="pressure" min="0" max="2" value="1" oninput="document.getElementById('pressureValue').innerText = this.value">
+    </div>
+    <div class="form-group">
+      <label>Энергия: <span class="slider-value" id="energyValue">1</span>/2</label>
+      <input type="range" id="energy" min="0" max="2" value="1" oninput="document.getElementById('energyValue').innerText = this.value">
+    </div>
+    <div class="form-group">
+      <label>Ясность: <span class="slider-value" id="clarityValue">1</span>/2</label>
+      <input type="range" id="clarity" min="0" max="2" value="1" oninput="document.getElementById('clarityValue').innerText = this.value">
+    </div>
+    <div class="form-group">
+      <label>Контакт: <span class="slider-value" id="contactValue">1</span>/2</label>
+      <input type="range" id="contact" min="0" max="2" value="1" oninput="document.getElementById('contactValue').innerText = this.value">
+    </div>
+    <div class="form-group">
+      <label>Что давит сегодня?</label>
+      <input type="text" id="dominantPressure" placeholder="Укажи главное давление дня...">
+    </div>
+    <div class="form-group">
+      <label class="checkbox-label">
+        <input type="checkbox" id="panicFlag">
+        <span>Я в панике / перегрузке</span>
+      </label>
+    </div>
+    <div class="buttons">
+      <button class="btn-secondary" onclick="showScreen('dashboard')">Отмена</button>
+      <button class="btn-primary" onclick="submitCheckin()">Генерировать колоду →</button>
+    </div>
+  </div>
+
+  <!-- EVENING LOG -->
+  <div id="screen-evening" class="screen">
+    <h1 style="font-size: 1.8rem;">! Evening Log</h1>
+    <div class="form-group">
+      <label>1. Что давило сегодня? *</label>
+      <textarea id="eveningPressure" placeholder="Какое давление было основным?"></textarea>
+    </div>
+    <div class="form-group">
+      <label>2. Что помогло удержаться? *</label>
+      <textarea id="eveningHelped" placeholder="Какое действие / контакт помогли?"></textarea>
+    </div>
+    <div class="form-group">
+      <label>3. Маленькая честность? *</label>
+      <textarea id="eveningHonesty" placeholder="Где я была честна? Даже если минимум..."></textarea>
+      <p style="font-size: 0.8rem; color: #666; margin-top: 6px;">Это ключ: маленькая честность ломает цикл.</p>
+    </div>
+    <div class="form-group">
+      <label>Триггеры (выбери):</label>
+      <div class="tags">
+        <button class="tag-btn" onclick="toggleTag(this, 'стресс')">стресс</button>
+        <button class="tag-btn" onclick="toggleTag(this, 'одиночество')">одиночество</button>
+        <button class="tag-btn" onclick="toggleTag(this, 'стыд')">стыд</button>
+        <button class="tag-btn" onclick="toggleTag(this, 'страх')">страх</button>
+        <button class="tag-btn" onclick="toggleTag(this, 'гнев')">гнев</button>
+        <button class="tag-btn" onclick="toggleTag(this, 'скука')">скука</button>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn-secondary" onclick="showScreen('dashboard')">Отмена</button>
+      <button class="btn-primary" onclick="submitEvening()">Закрыть день ✅</button>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div id="screen-history" class="screen">
+    <h1 style="font-size: 1.8rem;">" History</h1>
+    <div class="info-box">
+      <p><strong>Здесь сохраняются дни:</strong> уровень, XP, доминанта, выполненные карты и 3 строки дневника.</p>
+      <p style="margin-top: 8px; color:#999;">Важно: XP начисляется корректно только после “Закрыть день”.</p>
+    </div>
+    <div id="historyContainer"></div>
+    <div class="buttons">
+      <button class="btn-secondary" onclick="showScreen('dashboard')">← Назад</button>
+    </div>
+  </div>
 </div>
-<div class="form-group">
-<h2 style="font-size: 1.5rem; margin-bottom: 15px;">Добро пожаловать!
-</h2>
-<p style="color: #ccc; margin-bottom: 15px;">
-Это не ĸурс мотивации, это система самоуправления через:
-</p>
-<ul class="feature-list">
-<li>✅ Персональные уровни (L1-L7)</li>
-<li>✅ XP система и стриĸи</li>
-<li>✅ Ежедневные ĸарты-ĸвесты</li>
-<li>✅ Дневниĸ и история</li>
-</ul>
-</div>
-<div class="buttons">
-<button class="btn-primary" onclick="nextScreen('welcome',
-'style')">Начать →</button>
-</div>
-</div>
-<!-- STYLE SELECTION -->
-<div id="screen-style" class="screen">
-<h1 style="font-size: 1.8rem;"># Стиль общения</h1>
-<div class="progress-bar">
-<div class="progress-step active"></div>
-<div class="progress-step active"></div>
-<div class="progress-step"></div>
-<div class="progress-step"></div>
-</div>
-<div class="form-group">
-<label>Каĸ со мной говорить?</label>
-<select id="style" onchange="saveStyle(this.value)">
-<option value="soft">$ Мягĸий / поддерживающий</option>
-<option value="hard">% Жестĸий / прямой</option>
-<option value="structured">& Струĸтурный / понятный</option>
-<option value="anti-stress">' Анти-стресс / минимум</option>
-</select>
-</div>
-<div class="buttons">
-<button class="btn-secondary" onclick="prevScreen('style',
-'welcome')">← Назад</button>
-<button class="btn-primary" onclick="nextScreen('style',
-'profile')">Дальше →</button>
-</div>
-<div class="step-number">Шаг 2 из 4</div>
-</div>
-<!-- PROFILE -->
-<div id="screen-profile" class="screen">
-<h1 style="font-size: 1.8rem;">! Твой профиль</h1>
-<div class="progress-bar">
-<div class="progress-step active"></div>
-<div class="progress-step active"></div>
-<div class="progress-step active"></div>
-<div class="progress-step"></div>
-</div>
-<div class="form-group">
-<label>Главная цель</label>
-<input type="text" id="goal" placeholder="Например: запустить проеĸт,
-вернуть ĸонтроль...">
-</div>
-<div class="form-group">
-<label>Главный блоĸатор (что давит)</label>
-<input type="text" id="blocker" placeholder="Например: страх отĸаза,
-перфеĸционизм...">
-</div>
-<div class="form-group">
-<label>Размер задач</label>
-<select id="taskSize">
-<option value="micro">" Миĸро (2-5 мин)</option>
-<option value="normal" selected>◆ Нормальный (15-45 мин)</option>
-<option value="growth">◆◆ Рост (60+ мин)</option>
-</select>
-</div>
-<div class="buttons">
-<button class="btn-secondary" onclick="prevScreen('profile', 'style')">←
-Назад</button>
-<button class="btn-primary" onclick="nextScreen('profile',
-'ready')">Дальше →</button>
-</div>
-<div class="step-number">Шаг 3 из 4</div>
-</div>
-<!-- READY -->
-<div id="screen-ready" class="screen">
-<h1 style="font-size: 1.8rem;">✨ Готово!</h1>
-<div class="progress-bar">
-<div class="progress-step active"></div>
-<div class="progress-step active"></div>
-<div class="progress-step active"></div>
-<div class="progress-step active"></div>
-</div>
-<div class="success-message">
-✅ Профиль создан!<br>
-Ты начинаешь с L1 (Хаос → Стабилизация)
-</div>
-<div class="info-box">
-<p># <strong>Ежедневный циĸл:</strong></p>
-<p style="margin-top: 10px;">☀ <strong>Утро (1 мин):</strong> Check-
-in → Система выбирает уровень</p>
-<p style="margin-top: 8px;">% <strong>День:</strong> Выполняй 5
-ĸарт (получай XP)</p>
-<p style="margin-top: 8px;">& <strong>Вечер (2 мин):</strong>
-Логируй день (3 поля) → +25 XP</p>
-</div>
-<div class="buttons">
-<button class="btn-secondary" onclick="prevScreen('ready', 'profile')">←
-Назад</button>
-<button class="btn-primary" onclick="startGame()">Начать игру! ' </
-button>
-</div>
-</div>
-<div class="step-number">Шаг 4 из 4</div>
-<!-- DASHBOARD -->
-<div id="screen-dashboard" class="screen">
-<h1 style="font-size: 2rem; margin-bottom: 5px;">' <p class="subtitle">Life-OS</p>
-Reality Game</h1>
-<div class="hud">
-<div class="hud-item">
-<div class="hud-label">LEVEL</div>
-<div class="hud-value" id="levelDisplay">1</div>
-<div class="hud-name" id="levelName">Хаос</div>
-</div>
-<div class="hud-item">
-<div class="hud-label">XP</div>
-<div class="hud-value" id="xpDisplay">0</div>
-<div class="xp-bar">
-<div class="xp-progress" id="xpBar" style="width: 0%"></div>
-</div>
-<div class="xp-text" id="xpText">0/99</div>
-</div>
-<div class="hud-item">
-<div class="hud-label">STREAK</div>
-<div class="hud-value" id="streakDisplay">0</div>
-<div class="hud-name">! </div>
-</div>
-</div>
-<div class="form-group">
-<label style="color: #0ea5e9;">Доминанта дня</label>
-<div style="background: #2a2a2a; padding: 12px; border-radius: 8px;
-color: #ddd;">
-<span id="dominantDisplay">Не определена</span>
-</div>
-</div>
-<div id="cardsContainer"></div>
-<div class="buttons">
-<button class="btn-primary" onclick="showScreen('checkin')">☀
-Morning Check-in</button>
-<button class="btn-primary" onclick="showScreen('evening')">#
-Evening Log</button>
-</div>
-<div class="buttons" style="margin-top: 12px;">
-<button class="btn-secondary" onclick="showScreen('history')">$
-History</button>
-<button class="btn-secondary" onclick="resetTodayConfirm()">♻ Reset
-Today</button>
-</div>
-</div>
-<!-- MORNING CHECK-IN -->
-<div id="screen-checkin" class="screen">
-<h1 style="font-size: 1.8rem;">☀ Morning Check-in</h1>
-<div class="form-group">
-<label>Давление: <span class="slider-value" id="pressureValue">1</
-span>/2</label>
-<input type="range" id="pressure" min="0" max="2" value="1"
-oninput="document.getElementById('pressureValue').innerText =
-this.value">
-</div>
-<div class="form-group">
-<label>Энергия: <span class="slider-value" id="energyValue">1</span>/
-2</label>
-<input type="range" id="energy" min="0" max="2" value="1"
-oninput="document.getElementById('energyValue').innerText =
-this.value">
-</div>
-<div class="form-group">
-<label>Ясность: <span class="slider-value" id="clarityValue">1</span>/2</
-label>
-<input type="range" id="clarity" min="0" max="2" value="1"
-oninput="document.getElementById('clarityValue').innerText =
-this.value">
-</div>
-<div class="form-group">
-<label>Контаĸт: <span class="slider-value" id="contactValue">1</span>/
-2</label>
-<input type="range" id="contact" min="0" max="2" value="1"
-oninput="document.getElementById('contactValue').innerText =
-this.value">
-</div>
-<div class="form-group">
-<label>Что давит сегодня?</label>
-<input type="text" id="dominantPressure" placeholder="Уĸажи главное
-давление дня...">
-</div>
-<div class="form-group">
-<label class="checkbox-label">
-<input type="checkbox" id="panicFlag">
-<span>Я в паниĸе / перегрузĸе</span>
-</label>
-</div>
-<div class="buttons">
-<button class="btn-secondary"
-onclick="showScreen('dashboard')">Отмена</button>
-<button class="btn-primary" onclick="submitCheckin()">Генерировать
-ĸолоду →</button>
-</div>
-</div>
-<!-- EVENING LOG -->
-<div id="screen-evening" class="screen">
-<h1 style="font-size: 1.8rem;">! Evening Log</h1>
-<div class="form-group">
-<label>1. Что давило сегодня? *</label>
-<textarea id="eveningPressure" placeholder="Каĸое давление было
-основным?"></textarea>
-</div>
-<div class="form-group">
-<label>2. Что помогло удержаться? *</label>
-<textarea id="eveningHelped" placeholder="Каĸое действие / ĸонтаĸт
-помогли?"></textarea>
-</div>
-<div class="form-group">
-<label>3. Маленьĸая честность? *</label>
-<textarea id="eveningHonesty" placeholder="Где я была честна? Даже
-если минимум..."></textarea>
-<p style="font-size: 0.8rem; color: #666; margin-top: 6px;">Это ĸлюч:
-маленьĸая честность ломает циĸл.</p>
-</div>
-<div class="form-group">
-<label>Триггеры (выбери):</label>
-<div class="tags">
-<button class="tag-btn" onclick="toggleTag(this, 'стресс')">стресс</
-button>
-<button class="tag-btn" onclick="toggleTag(this,
-'одиночество')">одиночество</button>
-<button class="tag-btn" onclick="toggleTag(this, 'стыд')">стыд</
-button>
-<button class="tag-btn" onclick="toggleTag(this, 'страх')">страх</
-button>
-<button class="tag-btn" onclick="toggleTag(this, 'гнев')">гнев</
-button>
-<button class="tag-btn" onclick="toggleTag(this, 'сĸуĸа')">сĸуĸа</
-button>
-</div>
-</div>
-<div class="buttons">
-<button class="btn-secondary"
-onclick="showScreen('dashboard')">Отмена</button>
-<button class="btn-primary" onclick="submitEvening()">Заĸрыть день
-✅ </button>
-</div>
-</div>
-<!-- HISTORY -->
-<div id="screen-history" class="screen">
-<h1 style="font-size: 1.8rem;">" History</h1>
-<div class="info-box">
-<p><strong>Здесь сохраняются дни:</strong> уровень, XP, доминанта,
-выполненные ĸарты и 3 строĸи дневниĸа.</p>
-<p style="margin-top: 8px; color:#999;">Важно: XP начисляется
-ĸорреĸтно тольĸо после “Заĸрыть день”.</p>
-</div>
-<div id="historyContainer"></div>
-<div class="buttons">
-<button class="btn-secondary" onclick="showScreen('dashboard')">←
-Назад</button>
-</div>
-</div>
-</div>
+
 <script>
 /**
-* Reality Game — single-file MVP (localStorage)
-* v2: day-based storage, correct XP math (incl. subtract), streak, daily finalize,
-adaptive deck by level
-*/
-const STORAGE
-_KEY = 'reality-game-v2';
+ * Reality Game — single-file MVP (localStorage)
+ * v2: day-based storage, correct XP math (incl. subtract), streak, daily finalize,
+ * adaptive deck by level
+ */
+const STORAGE_KEY = 'reality-game-v2';
+
 /* ------------------ CONFIG ------------------ */
 const LEVELS = {
-1: { name: 'Хаос', min: 0, max: 99 },
-2: { name: 'Стабилизация', min: 100, max: 249 },
-3: { name: 'Ритм', min: 250, max: 449 },
-4: { name: 'Фоĸус', min: 450, max: 699 },
-5: { name: 'Потоĸ', min: 700, max: 999 },
-6: { name: 'Лидерство', min: 1000, max: 1399 },
-7: { name: 'Масштаб', min: 1400, max: 2000 }, // cap for UI progress bar
+  1: { name: 'Хаос', min: 0, max: 99 },
+  2: { name: 'Стабилизация', min: 100, max: 249 },
+  3: { name: 'Ритм', min: 250, max: 449 },
+  4: { name: 'Фокус', min: 450, max: 699 },
+  5: { name: 'Поток', min: 700, max: 999 },
+  6: { name: 'Лидерство', min: 1000, max: 1399 },
+  7: { name: 'Масштаб', min: 1400, max: 2000 } // cap for UI progress bar
 };
-const BASE
-_CARDS = {
-anchor: [
-{ id:'anchor-breath', title:'Миĸро-ритуал', icon:'! ', desc:'2–3 минуты: дыхание /
-вода / ĸоротĸая фиĸсация', xp:10, time:'2–3m' },
-{ id:'anchor-setup', title:'Ритуал “вĸлючиться”', icon:'⚙ ', desc:'5–10 минут: план
-1 шага + фоĸус', xp:10, time:'5–10m' },
-],
-contact: [
-{ id:'contact-touch', title:'1 ĸасание', icon:'# ', desc:'Коротĸое сообщение/
-звоноĸ: “я на связи” или по делу', xp:10, time:'1–5m' },
-{ id:'contact-3', title:'3 ĸасания', icon:'$ ', desc:'1 тёплый + 1 рабочий + 1
-расширяющий ĸонтаĸт', xp:10, time:'5–15m' },
-],
-honesty: [
-{ id:'honesty-truth', title:'Маленьĸая честность', icon:'% ', desc:'Одно честное
-действие/сообщение без оправданий', xp:15, time:'1–10m' },
-{ id:'honesty-label', title:'Назови доминанту', icon:'& ', desc:'1 строĸа: “меня
-давит …” + один шаг “решить/снизить/отложить”', xp:15, time:'1–5m' },
-],
-shield: [
-{ id:'shield-antiwave', title:'Shield (Anti-волна)', icon:'' ', desc:'3–5 минут:
-дыхание + фиĸсация реальности + длинный выдох', xp:10, time:'3–5m' },
-{ id:'shield-offline', title:'Shield (Снять шум)', icon:'( ', desc:'10 минут: убрать
-ленту/уведомления, вĸлючить музыĸу, ĸоротĸая прогулĸа', xp:10, time:'10m' },
-],
+
+const BASE_CARDS = {
+  anchor: [
+    { id: 'anchor-breath', title: 'Микро-ритуал', icon: '! ', desc: '2–3 минуты: дыхание / вода / короткая фиксация', xp: 10, time: '2–3m' },
+    { id: 'anchor-setup', title: 'Ритуал “включиться”', icon: '⚙ ', desc: '5–10 минут: план 1 шага + фокус', xp: 10, time: '5–10m' }
+  ],
+  contact: [
+    { id: 'contact-touch', title: '1 касание', icon: '# ', desc: 'Короткое сообщение/звонок: “я на связи” или по делу', xp: 10, time: '1–5m' },
+    { id: 'contact-3', title: '3 касания', icon: '$ ', desc: '1 тёплый + 1 рабочий + 1 расширяющий контакт', xp: 10, time: '5–15m' }
+  ],
+  honesty: [
+    { id: 'honesty-truth', title: 'Маленькая честность', icon: '% ', desc: 'Одно честное действие/сообщение без оправданий', xp: 15, time: '1–10m' },
+    { id: 'honesty-label', title: 'Назови доминанту', icon: '& ', desc: '1 строка: “меня давит …” + один шаг “решить/снизить/отложить”', xp: 15, time: '1–5m' }
+  ],
+  shield: [
+    { id: 'shield-antiwave', title: 'Shield (Anti-волна)', icon: "' ", desc: '3–5 минут: дыхание + фиксация реальности + длинный выдох', xp: 10, time: '3–5m' },
+    { id: 'shield-offline', title: 'Shield (Снять шум)', icon: '( ', desc: '10 минут: убрать ленту/уведомления, включить музыку, короткая прогулка', xp: 10, time: '10m' }
+  ]
 };
-const CORE
-BY
-_
-_LEVEL = {
-1: [
-{ id:'core-l1-dominant', title:'Core Quest L1', icon:') ', desc:'Снять одну
-доминанту: реши/снизь/отложи осознанно (1 шаг)', xp:20, time:'5–15m' },
-],
-2: [
-{ id:'core-l2-island', title:'Core Quest L2', icon:'* ', desc:'“Остров ĸонтроля”: 25
-минут на 1 миĸро-задачу по делу', xp:20, time:'25m' },
-],
-3: [
-{ id:'core-l3-real-move', title:'Core Quest L3', icon:'+ ', desc:'One Real Move: 45–
-90 минут на 1 действие, двигающее результат', xp:20, time:'45–90m' },
-],
-4: [
-{ id:'core-l4-focus2', title:'Core Quest L4', icon:', ', desc:'2 фоĸус-блоĸа по 60
-минут (создание/продажи/материалы)', xp:20, time:'2×60m' },
-],
-5: [
-{ id:'core-l5-money', title:'Core Quest L5', icon:'! ', desc:'Money Move: действие
-ближе всего ĸ оплате (письмо/звоноĸ/оффер)', xp:20, time:'30–90m' },
-],
-6: [
-{ id:'core-l6-lead', title:'Core Quest L6', icon:'" ', desc:'Лидерсĸий шаг:
-подготовь/проведи созвон, пригласи 3 человеĸа', xp:20, time:'30–60m' },
-],
-7: [
-{ id:'core-l7-system', title:'Core Quest L7', icon:'# ', desc:'Артефаĸт системы:
-сĸрипт/онбординг/воронĸа (повторяемый аĸтив)', xp:20, time:'60–120m' },
-],
+
+const CORE_BY_LEVEL = {
+  1: [
+    { id: 'core-l1-dominant', title: 'Core Quest L1', icon: ') ', desc: 'Снять одну доминанту: реши/снизь/отложи осознанно (1 шаг)', xp: 20, time: '5–15m' }
+  ],
+  2: [
+    { id: 'core-l2-island', title: 'Core Quest L2', icon: '* ', desc: '“Остров контроля”: 25 минут на 1 микро-задачу по делу', xp: 20, time: '25m' }
+  ],
+  3: [
+    { id: 'core-l3-real-move', title: 'Core Quest L3', icon: '+ ', desc: 'One Real Move: 45–90 минут на 1 действие, двигающее результат', xp: 20, time: '45–90m' }
+  ],
+  4: [
+    { id: 'core-l4-focus2', title: 'Core Quest L4', icon: ', ', desc: '2 фокус-блока по 60 минут (создание/продажи/материалы)', xp: 20, time: '2×60m' }
+  ],
+  5: [
+    { id: 'core-l5-money', title: 'Core Quest L5', icon: '! ', desc: 'Money Move: действие ближе всего к оплате (письмо/звонок/оффер)', xp: 20, time: '30–90m' }
+  ],
+  6: [
+    { id: 'core-l6-lead', title: 'Core Quest L6', icon: '" ', desc: 'Лидерский шаг: подготовь/проведи созвон, пригласи 3 человека', xp: 20, time: '30–60m' }
+  ],
+  7: [
+    { id: 'core-l7-system', title: 'Core Quest L7', icon: '# ', desc: 'Артефакт системы: скрипт/онбординг/воронка (повторяемый актив)', xp: 20, time: '60–120m' }
+  ]
 };
-const XP
-_RULES = {
-bonusAnchors: 15, // A+C+H
-bonusAllFive: 25, // all 5 cards
-bonusEveningLog: 25, // closing day
-penaltyLow: -20, // 0–1 cards completed (applied on finalize)
+
+const XP_RULES = {
+  bonusAnchors: 15, // A+C+H
+  bonusAllFive: 25, // all 5 cards
+  bonusEveningLog: 25, // closing day
+  penaltyLow: -20 // 0–1 cards completed (applied on finalize)
+};
+
 function todayISO() {
-return new Date().toISOString().slice(0,10);
-};
+  return new Date().toISOString().slice(0, 10);
 }
+
+function pickVariant(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
+function dayCardXP(card) {
+  return card.xp || 0;
+}
+
 /* ------------------ STATE ------------------ */
 let gameState = {
-version: 2,
-profile: { style:'soft', goal:'', blocker:'', taskSize:'normal' },
-xp_total: 0,
-streak: 0,
-fail
-_streak: 0,
-days: {}, // map date -> dayRecord
-currentDay: null, // ISO date
+  version: 2,
+  profile: { style: 'soft', goal: '', blocker: '', taskSize: 'normal' },
+  xp_total: 0,
+  streak: 0,
+  fail_streak: 0,
+  days: {}, // map date -> dayRecord
+  currentDay: null // ISO date
 };
-{
+
 /* dayRecord shape:
-date, checkin:{pressure,energy,clarity,contact,dominant,panic},
-level
-_suggested,
-deck:[card], completed:[cardId],
-evening:{pressure,helped,honesty,tags:[]}|null,
-finalized:false
-}
-*/
+ * date, checkin:{pressure,energy,clarity,contact,dominant,panic},
+ * level_suggested,
+ * deck:[card], completed:[cardId],
+ * evening:{pressure,helped,honesty,tags:[]}|null,
+ * finalized:false
+ */
+
 /* ------------------ STORAGE ------------------ */
 function saveGame() {
-localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
 }
+
 function loadGame() {
-const saved = localStorage.getItem(STORAGE_KEY);
-if (saved) {
-try {
-gameState = JSON.parse(saved);
-} catch (e) {
-console.warn('Failed to parse save:', e);
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try {
+      gameState = JSON.parse(saved);
+    } catch (e) {
+      console.warn('Failed to parse save:', e);
+    }
+  }
+  // migrate from old key if present
+  const legacy = localStorage.getItem('reality-game');
+  if (!saved && legacy) {
+    // keep legacy untouched; start fresh v2
+  }
 }
-}
-// migrate from old key if present
-const legacy = localStorage.getItem('reality-game');
-if (!saved && legacy) {
-// keep legacy untouched; start fresh v2
-}
-}
+
 /* ------------------ LEVEL / XP HELPERS ------------------ */
 function levelFromXP(xp) {
-for (let l = 7; l >= 1; l--) {
-if (xp >= LEVELS[l].min) return l;
+  for (let l = 7; l >= 1; l--) {
+    if (xp >= LEVELS[l].min) return l;
+  }
+  return 1;
 }
-return 1;
-}
+
 function xpProgress(xp) {
-const level = levelFromXP(xp);
-const meta = LEVELS[level];
-const cap = meta.max;
-const min = meta.min;
-const inLevel = Math.max(0, xp - min);
-const denom = Math.max(1, cap - min);
-const pct = Math.min(100, Math.round((inLevel / denom) * 100));
-return { level, inLevel, denom, pct };
+  const level = levelFromXP(xp);
+  const meta = LEVELS[level];
+  const cap = meta.max;
+  const min = meta.min;
+  const inLevel = Math.max(0, xp - min);
+  const denom = Math.max(1, cap - min);
+  const pct = Math.min(100, Math.round((inLevel / denom) * 100));
+  return { level, inLevel, denom, pct };
 }
+
 function computeSuggestedLevel(checkin) {
-// 0..2 each -> sum 0..8
-const s = checkin.pressure + checkin.energy + checkin.clarity + checkin.contact;
-if (checkin.panic) return 2;
-if (s <= 3) return (checkin.pressure >= 2 ? 1 : 2);
-if (s <= 5) return 3;
-if (s <= 7) return 4;
-return 5;
-function pickVariant(list) {
-return list[Math.floor(Math.random() * list.length)];
+  // 0..2 each -> sum 0..8
+  const s = checkin.pressure + checkin.energy + checkin.clarity + checkin.contact;
+  if (checkin.panic) return 2;
+  if (s <= 3) return checkin.pressure >= 2 ? 1 : 2;
+  if (s <= 5) return 3;
+  if (s <= 7) return 4;
+  return 5;
 }
-}
+
 function buildDeckForLevel(level, checkin) {
-const deck = [];
-// base anchors vary by level
-deck.push(pickVariant(BASE_CARDS.anchor));
-deck.push(level >= 3 ? pickVariant(BASE_CARDS.contact) :
-BASE
-_CARDS.contact[0]);
-deck.push(pickVariant(BASE_CARDS.honesty));
-deck.push(pickVariant(CORE_
-BY
-_LEVEL[Math.min(7, Math.max(1, level))]));
-// shield: always if pressure high or panic, else optional (still include as 5th card to
-keep structure)
-const shield = (checkin.panic || checkin.pressure >= 2) ? BASE
-_CARDS.shield[0] :
-BASE
-_CARDS.shield[1];
-deck.push(shield);
-// Ensure unique IDs for day (prefix with date to avoid collisions in history)
-// We'll handle uniqueness on record creation.
-return deck;
-function dayCardXP(card) {
-return card.xp || 0;
+  const deck = [];
+  // base anchors vary by level
+  deck.push(pickVariant(BASE_CARDS.anchor));
+  deck.push(level >= 3 ? pickVariant(BASE_CARDS.contact) : BASE_CARDS.contact[0]);
+  deck.push(pickVariant(BASE_CARDS.honesty));
+  deck.push(pickVariant(CORE_BY_LEVEL[Math.min(7, Math.max(1, level))]));
+  // shield: always if pressure high or panic, else optional (still include as 5th card to keep structure)
+  const shield = (checkin.panic || checkin.pressure >= 2) ? BASE_CARDS.shield[0] : BASE_CARDS.shield[1];
+  deck.push(shield);
+  // Ensure unique IDs for day (prefix with date to avoid collisions in history)
+  return deck;
 }
-}
+
 function computeDayXP(day) {
-const completedSet = new Set(day.completed || []);
-const cards = day.deck || [];
-let xp = 0;
-for (const c of cards) {
-if (completedSet.has(c.dayId)) xp += dayCardXP(c);
+  const completedSet = new Set(day.completed || []);
+  const cards = day.deck || [];
+  let xp = 0;
+  for (const c of cards) {
+    if (completedSet.has(c.dayId)) xp += dayCardXP(c);
+  }
+  // bonus: 3 anchors (types anchor+contact+honesty)
+  const typesDone = new Set(cards.filter(c => completedSet.has(c.dayId)).map(c => c.type));
+  if (typesDone.has('anchor') && typesDone.has('contact') && typesDone.has('honesty')) {
+    xp += XP_RULES.bonusAnchors;
+  }
+  // all five
+  if (completedSet.size === cards.length && cards.length === 5) {
+    xp += XP_RULES.bonusAllFive;
+  }
+  // evening log bonus only after finalize
+  if (day.finalized && day.evening) {
+    xp += XP_RULES.bonusEveningLog;
+  }
+  return xp;
 }
-// bonus: 3 anchors (types anchor+contact+honesty)
-const typesDone = new Set(cards.filter(c => completedSet.has(c.dayId)).map(c =>
-c.type));
-if (typesDone.has('anchor') && typesDone.has('contact') &&
-typesDone.has('honesty')) {
-xp += XP_RULES.bonusAnchors;
-}
-// all five
-if (completedSet.size === cards.length && cards.length === 5) {
-xp += XP_RULES.bonusAllFive;
-}
-// evening log bonus only after finalize
-if (day.finalized && day.evening) {
-xp += XP_RULES.bonusEveningLog;
-}
-return xp;
-}
+
 /* ------------------ UI HELPERS ------------------ */
 function showScreen(name) {
-document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-document.getElementById('screen-' + name).classList.add('active');
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
 }
+
 function nextScreen(from, to) {
-document.getElementById('screen-' + from).classList.remove('active');
-document.getElementById('screen-' + to).classList.add('active');
+  document.getElementById('screen-' + from).classList.remove('active');
+  document.getElementById('screen-' + to).classList.add('active');
 }
-function prevScreen(from, to) { nextScreen(from, to); }
+
+function prevScreen(from, to) {
+  nextScreen(from, to);
+}
+
 /* ------------------ ONBOARDING ------------------ */
 function saveStyle(style) {
-gameState.profile.style = style;
-saveGame();
+  gameState.profile.style = style;
+  saveGame();
 }
+
 function startGame() {
-gameState.profile.goal = document.getElementById('goal').value.trim();
-gameState.profile.blocker = document.getElementById('blocker').value.trim();
-gameState.profile.taskSize = document.getElementById('taskSize').value;
-saveGame();
-ensureTodayRecord();
-updateDashboard();
-showScreen('dashboard');
+  gameState.profile.goal = document.getElementById('goal').value.trim();
+  gameState.profile.blocker = document.getElementById('blocker').value.trim();
+  gameState.profile.taskSize = document.getElementById('taskSize').value;
+  saveGame();
+  ensureTodayRecord();
+  updateDashboard();
+  showScreen('dashboard');
 }
+
 /* ------------------ DAILY RECORDS ------------------ */
 function ensureTodayRecord() {
-const t = todayISO();
-gameState.currentDay = t;
-if (!gameState.days[t]) {
-gameState.days[t] = {
-date: t,
-checkin: null,
-level
-_suggested: null,
-deck: [],
-completed: [],
-evening: null,
-finalized: false
-};
-saveGame();
+  const t = todayISO();
+  gameState.currentDay = t;
+  if (!gameState.days[t]) {
+    gameState.days[t] = {
+      date: t,
+      checkin: null,
+      level_suggested: null,
+      deck: [],
+      completed: [],
+      evening: null,
+      finalized: false
+    };
+    saveGame();
+  }
+  return gameState.days[t];
 }
-return gameState.days[t];
-}
+
 function resetTodayConfirm() {
-const day = ensureTodayRecord();
-if (day.finalized) {
-alert('Этот день уже заĸрыт. Нельзя сбросить.');
-return;
+  const day = ensureTodayRecord();
+  if (day.finalized) {
+    alert('Этот день уже закрыт. Нельзя сбросить.');
+    return;
+  }
+  if (confirm('Сбросить сегодняшние отметки и чек-ин?')) {
+    day.checkin = null;
+    day.level_suggested = null;
+    day.deck = [];
+    day.completed = [];
+    day.evening = null;
+    day.finalized = false;
+    saveGame();
+    updateDashboard();
+  }
 }
-if (confirm('Сбросить сегодняшние отметĸи и чеĸ-ин?')) {
-day.checkin = null;
-day.level_suggested = null;
-day.deck = [];
-day.completed = [];
-day.evening = null;
-day.finalized = false;
-saveGame();
-updateDashboard();
-}
-}
+
 /* ------------------ CHECK-IN ------------------ */
 function submitCheckin() {
-const day = ensureTodayRecord();
-if (day.finalized) {
-alert('День уже заĸрыт. Чеĸ-ин недоступен.');
-return;
+  const day = ensureTodayRecord();
+  if (day.finalized) {
+    alert('День уже закрыт. Чек-ин недоступен.');
+    return;
+  }
+  const checkin = {
+    pressure: parseInt(document.getElementById('pressure').value, 10),
+    energy: parseInt(document.getElementById('energy').value, 10),
+    clarity: parseInt(document.getElementById('clarity').value, 10),
+    contact: parseInt(document.getElementById('contact').value, 10),
+    dominant: (document.getElementById('dominantPressure').value || '').trim() || 'Не определена',
+    panic: !!document.getElementById('panicFlag').checked
+  };
+  day.checkin = checkin;
+  day.level_suggested = computeSuggestedLevel(checkin);
+  // Generate deck
+  const rawDeck = buildDeckForLevel(day.level_suggested, checkin);
+  // assign day-unique ids + type
+  day.deck = rawDeck.map((c, idx) => ({
+    ...c,
+    type: c.id.split('-')[0], // anchor/contact/honesty/core/shield
+    dayId: `${day.date}:${c.id}:${idx}` // stable unique id
+  }));
+  day.completed = [];
+  saveGame();
+  updateDashboard();
+  showScreen('dashboard');
 }
-const checkin = {
-pressure: parseInt(document.getElementById('pressure').value, 10),
-energy: parseInt(document.getElementById('energy').value, 10),
-clarity: parseInt(document.getElementById('clarity').value, 10),
-contact: parseInt(document.getElementById('contact').value, 10),
-dominant: (document.getElementById('dominantPressure').value || '').trim() || 'Не
-определена',
-panic: !!document.getElementById('panicFlag').checked,
-};
-day.checkin = checkin;
-day.level_suggested = computeSuggestedLevel(checkin);
-// Generate deck
-const rawDeck = buildDeckForLevel(day.level_suggested, checkin);
-// assign day-unique ids + type
-day.deck = rawDeck.map((c, idx) => ({
-...c,
-type: c.id.split('-')[0], // anchor/contact/honesty/core/shield
-dayId: `${day.date}:${c.id}:${idx}` // stable unique id
-}));
-day.completed = [];
-saveGame();
-updateDashboard();
-showScreen('dashboard');
-}
+
 /* ------------------ CARDS ------------------ */
 function toggleCard(dayId) {
-const day = ensureTodayRecord();
-if (!day.deck || day.deck.length === 0) {
-alert('Сначала сделай Morning Check-in, чтобы сгенерировать ĸолоду.');
-return;
+  const day = ensureTodayRecord();
+  if (!day.deck || day.deck.length === 0) {
+    alert('Сначала сделай Morning Check-in, чтобы сгенерировать колоду.');
+    return;
+  }
+  if (day.finalized) {
+    alert('День уже закрыт. Отметки недоступны.');
+    return;
+  }
+  const i = day.completed.indexOf(dayId);
+  if (i >= 0) {
+    day.completed.splice(i, 1);
+  } else {
+    day.completed.push(dayId);
+  }
+  saveGame();
+  updateDashboard();
 }
-if (day.finalized) {
-alert('День уже заĸрыт. Отметĸи недоступны.');
-return;
-}
-const i = day.completed.indexOf(dayId);
-if (i >= 0) day.completed.splice(i, 1);
-else day.completed.push(dayId);
-saveGame();
-updateDashboard();
-}
+
 function renderCards() {
-const day = ensureTodayRecord();
-const container = document.getElementById('cardsContainer');
-if (!day.deck || day.deck.length === 0) {
-container.innerHTML = `
-<div class="info-box">
-<p><strong>Колода ещё не создана.</strong> Нажми “Morning Check-in”,
-чтобы получить 5 ĸарточеĸ на день.</p>
-</div>`;
-return;
+  const day = ensureTodayRecord();
+  const container = document.getElementById('cardsContainer');
+  if (!day.deck || day.deck.length === 0) {
+    container.innerHTML = `
+      <div class="info-box">
+        <p><strong>Колода ещё не создана.</strong> Нажми “Morning Check-in”, чтобы получить 5 карточек на день.</p>
+      </div>`;
+    return;
+  }
+  const completedSet = new Set(day.completed);
+  container.innerHTML = `<p style="color:#666; margin-bottom:15px;">
+    Today Deck (${day.completed.length}/${day.deck.length})
+    ${day.finalized ? ' • <span style="color:#0ea5e9;">Day closed</span>' : ''}
+  </p>`;
+  day.deck.forEach(card => {
+    const isCompleted = completedSet.has(card.dayId);
+    const cardEl = document.createElement('div');
+    cardEl.className = 'card' + (isCompleted ? ' completed' : '');
+    cardEl.onclick = () => toggleCard(card.dayId);
+    cardEl.innerHTML = `
+      <div class="card-header">
+        <input type="checkbox" class="card-checkbox" ${isCompleted ? 'checked' : ''} onclick="event.stopPropagation(); toggleCard('${card.dayId}');">
+        <span class="card-icon">${card.icon}</span>
+        <span class="card-title">${card.title}</span>
+      </div>
+      <div class="card-desc">${card.desc}</div>
+      <div class="card-stats">
+        <span>⏱ ${card.time || ''}</span>
+        <span>⭐ +${card.xp} XP</span>
+      </div>
+    `;
+    container.appendChild(cardEl);
+  });
 }
-const completedSet = new Set(day.completed);
-container.innerHTML = `<p style="color:#666; margin-bottom:15px;">
-Today Deck (${day.completed.length}/${day.deck.length})
-${day.finalized ? ' • <span style="color:#0ea5e9;">Day closed</span>' : ''}
-</p>`;
-day.deck.forEach(card => {
-const isCompleted = completedSet.has(card.dayId);
-const cardEl = document.createElement('div');
-cardEl.className = 'card' + (isCompleted ? ' completed' : '');
-cardEl.onclick = () => toggleCard(card.dayId);
-cardEl.innerHTML = `
-<div class="card-header">
-<input type="checkbox" class="card-checkbox" ${isCompleted ? 'checked' : ''}
-onclick="event.stopPropagation(); toggleCard('${card.dayId}');">
-<span class="card-icon">${card.icon}</span>
-<span class="card-title">${card.title}</span>
-</div>
-<div class="card-desc">${card.desc}</div>
-<div class="card-stats">
-<span>⏱ ${card.time || ''}</span>
-<span>⭐ +${card.xp} XP</span>
-</div>
-`;
-});
-container.appendChild(cardEl);
-}
+
 /* ------------------ EVENING LOG / FINALIZE ------------------ */
 let selectedTags = [];
 function toggleTag(btn, tag) {
-btn.classList.toggle('active');
-const idx = selectedTags.indexOf(tag);
-if (idx >= 0) selectedTags.splice(idx, 1);
-else selectedTags.push(tag);
+  btn.classList.toggle('active');
+  const idx = selectedTags.indexOf(tag);
+  if (idx >= 0) {
+    selectedTags.splice(idx, 1);
+  } else {
+    selectedTags.push(tag);
+  }
 }
+
 function submitEvening() {
-const day = ensureTodayRecord();
-if (!day.deck || day.deck.length === 0) {
-alert('Сначала сделай Morning Check-in и получи ĸолоду.');
-return;
+  const day = ensureTodayRecord();
+  if (!day.deck || day.deck.length === 0) {
+    alert('Сначала сделай Morning Check-in и получи колоду.');
+    return;
+  }
+  if (day.finalized) {
+    alert('День уже закрыт.');
+    return;
+  }
+  const pressure = document.getElementById('eveningPressure').value.trim();
+  const helped = document.getElementById('eveningHelped').value.trim();
+  const honesty = document.getElementById('eveningHonesty').value.trim();
+  if (!pressure || !helped || !honesty) {
+    alert('Заполни все 3 обязательных поля!');
+    return;
+  }
+  day.evening = { pressure, helped, honesty, tags: [...selectedTags] };
+  day.finalized = true;
+  // Commit XP for the day
+  const completedCount = (day.completed || []).length;
+  // base earned XP = cards + bonuses + evening bonus (handled in computeDayXP)
+  let earned = computeDayXP(day);
+  // penalties for low completion (0-1 cards)
+  if (completedCount <= 1 && !(day.checkin && day.checkin.panic)) {
+    earned += XP_RULES.penaltyLow;
+  }
+  gameState.xp_total = Math.max(0, gameState.xp_total + earned);
+  // streak logic: "good day" = >=3 cards or (panic day and evening done)
+  const goodDay = (completedCount >= 3) || (day.checkin && day.checkin.panic);
+  if (goodDay) {
+    gameState.streak += 1;
+    gameState.fail_streak = 0;
+  } else {
+    gameState.streak = 0;
+    gameState.fail_streak = (gameState.fail_streak || 0) + 1;
+  }
+  // rollback rule: 2 bad days in a row => push XP down to drop one level if possible
+  if (gameState.fail_streak >= 2) {
+    const currentLevel = levelFromXP(gameState.xp_total);
+    const target = Math.max(1, currentLevel - 1);
+    // set xp_total to just inside lower level range
+    gameState.xp_total = Math.max(0, LEVELS[target].min);
+    gameState.fail_streak = 0;
+  }
+  saveGame();
+  alert('✅ День завершен! XP начислены.');
+  selectedTags = [];
+  updateDashboard();
+  showScreen('dashboard');
 }
-if (day.finalized) {
-alert('День уже заĸрыт.');
-return;
-}
-const pressure = document.getElementById('eveningPressure').value.trim();
-const helped = document.getElementById('eveningHelped').value.trim();
-const honesty = document.getElementById('eveningHonesty').value.trim();
-if (!pressure || !helped || !honesty) {
-alert('Заполни все 3 обязательных поля!');
-return;
-}
-day.evening = { pressure, helped, honesty, tags: [...selectedTags] };
-day.finalized = true;
-// Commit XP for the day
-const completedCount = (day.completed || []).length;
-// base earned XP = cards + bonuses + evening bonus (handled in computeDayXP)
-let earned = computeDayXP(day);
-// penalties for low completion (0-1 cards)
-if (completedCount <= 1 && !(day.checkin && day.checkin.panic)) {
-earned += XP
-_RULES.penaltyLow;
-}
-gameState.xp_total = Math.max(0, gameState.xp_total + earned);
-// streak logic: "good day" = >=3 cards or (panic day and evening done)
-const goodDay = (completedCount >= 3) || (day.checkin && day.checkin.panic);
-if (goodDay) {
-gameState.streak += 1;
-gameState.fail_streak = 0;
-} else {
-gameState.streak = 0;
-gameState.fail_streak = (gameState.fail_streak || 0) + 1;
-}
-// rollback rule: 2 bad days in a row => push XP down to drop one level if possible
-if (gameState.fail_streak >= 2) {
-const currentLevel = levelFromXP(gameState.xp_total);
-const target = Math.max(1, currentLevel - 1);
-// set xp_total to just inside lower level range
-gameState.xp_total = Math.max(0, LEVELS[target].min);
-gameState.fail_streak = 0;
-}
-saveGame();
-alert('✅ День завершен! XP начислены.');
-selectedTags = [];
-updateDashboard();
-showScreen('dashboard');
-}
+
 /* ------------------ DASHBOARD / HISTORY ------------------ */
 function updateDashboard() {
-const day = ensureTodayRecord();
-// Determine displayed XP: include today's uncommitted preview if not finalized
-let preview = 0;
-if (day.deck && day.deck.length > 0) {
-// compute day XP without evening bonus unless finalized
-const tmp = { ...day, finalized: false };
-preview = computeDayXP(tmp);
+  const day = ensureTodayRecord();
+  // Determine displayed XP: include today's uncommitted preview if not finalized
+  let preview = 0;
+  if (day.deck && day.deck.length > 0) {
+    // compute day XP without evening bonus unless finalized
+    const tmp = { ...day, finalized: false };
+    preview = computeDayXP(tmp);
+  }
+  const totalShown = day.finalized ? gameState.xp_total : gameState.xp_total + preview;
+  const prog = xpProgress(totalShown);
+  const meta = LEVELS[prog.level];
+  document.getElementById('levelDisplay').innerText = prog.level;
+  document.getElementById('levelName').innerText = meta.name;
+  document.getElementById('xpDisplay').innerText = totalShown;
+  document.getElementById('xpBar').style.width = prog.pct + '%';
+  document.getElementById('xpText').innerText = `${prog.inLevel}/${prog.denom}`;
+  document.getElementById('streakDisplay').innerText = gameState.streak || 0;
+  const dominant = day.checkin ? day.checkin.dominant : 'Не определена';
+  document.getElementById('dominantDisplay').innerText = dominant;
+  renderCards();
+  renderHistory();
 }
-preview;
-const totalShown = day.finalized ? gameState.xp_total : gameState.xp_
-total +
-const prog = xpProgress(totalShown);
-const meta = LEVELS[prog.level];
-document.getElementById('levelDisplay').innerText = prog.level;
-document.getElementById('levelName').innerText = meta.name;
-document.getElementById('xpDisplay').innerText = totalShown;
-document.getElementById('xpBar').style.width = prog.pct + '%';
-document.getElementById('xpText').innerText = `${prog.inLevel}/${prog.denom}`;
-document.getElementById('streakDisplay').innerText = gameState.streak || 0;
-const dominant = day.checkin ? day.checkin.dominant : 'Не определена';
-document.getElementById('dominantDisplay').innerText = dominant;
-renderCards();
-renderHistory();
-}
+
 function renderHistory() {
-const container = document.getElementById('historyContainer');
-if (!container) return;
-const days = Object.values(gameState.days || {}).sort((a,b) => (a.date < b.date ? 1 :
--1));
-if (days.length === 0) {
-container.innerHTML = `<div class="info-box">Поĸа нет истории. Заĸрой хотя
-бы один день.</div>`;
-return;
+  const container = document.getElementById('historyContainer');
+  if (!container) return;
+  const days = Object.values(gameState.days || {}).sort((a, b) => (a.date < b.date ? 1 : -1));
+  if (days.length === 0) {
+    container.innerHTML = `<div class="info-box">Пока нет истории. Закрой хотя бы один день.</div>`;
+    return;
+  }
+  container.innerHTML = '';
+  for (const d of days) {
+    const completed = (d.completed || []).length;
+    const dominant = d.checkin ? d.checkin.dominant : '—';
+    const title = `${d.date} • ${d.finalized ? '✅' : '⏳'} • cards ${completed}/5`;
+    const box = document.createElement('div');
+    box.className = 'info-box';
+    box.innerHTML = `
+      <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
+        <div>
+          <div style="font-weight:700; color:#0ea5e9;">${title}</div>
+          <div style="margin-top:6px; color:#ccc;"><strong>Доминанта:</strong> ${dominant}</div>
+          ${d.evening ? `
+            <div style="margin-top:8px; color:#ccc;"><strong>Log:</strong></div>
+            <div style="margin-top:4px; color:#999;">1) ${escapeHtml(d.evening.pressure)}</div>
+            <div style="margin-top:2px; color:#999;">2) ${escapeHtml(d.evening.helped)}</div>
+            <div style="margin-top:2px; color:#999;">3) ${escapeHtml(d.evening.honesty)}</div>
+          ` : `<div style="margin-top:8px; color:#666;">Лог не заполнен.</div>`}
+        </div>
+      </div>
+    `;
+    container.appendChild(box);
+  }
 }
-container.innerHTML = '';
-for (const d of days) {
-const level = d.finalized ? levelFromXP(gameState.xp_total) : (d.level_suggested ||
-1);
-const completed = (d.completed || []).length;
-const dominant = d.checkin ? d.checkin.dominant : '—';
-const title = `${d.date} • ${d.finalized ? '✅ ' : '⏳ '} • cards ${completed}/5`;
-const box = document.createElement('div');
-box.className = 'info-box';
-box.innerHTML = `
-<div style="display:flex; justify-content:space-between; gap:10px; align-
-items:flex-start;">
-<div>
-<div style="font-weight:700; color:#0ea5e9;">${title}</div>
-<div style="margin-top:6px; color:#ccc;"><strong>Доминанта:</strong> $
-{dominant}</div>
-${d.evening ? `
-<div style="margin-top:8px; color:#ccc;"><strong>Log:</strong></div>
-<div style="margin-top:4px; color:#999;">1) $
-{escapeHtml(d.evening.pressure)}</div>
-<div style="margin-top:2px; color:#999;">2) $
-{escapeHtml(d.evening.helped)}</div>
-<div style="margin-top:2px; color:#999;">3) $
-{escapeHtml(d.evening.honesty)}</div>
-` : `<div style="margin-top:8px; color:#666;">Лог не заполнен.</div>`}
-</div>
-</div>
-`;
-container.appendChild(box);
-}
-}
+
 function escapeHtml(s) {
-return (s || '').replace(/[&<>"']/g, c =>
-({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  return (s || '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[c]));
 }
+
 /* ------------------ INIT ------------------ */
 loadGame();
 ensureTodayRecord();
